@@ -1,0 +1,4 @@
+train: yolov5_data/images/train
+val: yolov5_data/images/validation
+nc: 2
+names: ["person", "car"]
