@@ -1,0 +1,30 @@
+FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
+ENV DEBIAN_FRONTEND noninteractive
+ENV QT_DEBUG_PLUGINS = 1
+RUN apt-get -y update && apt-get install -y git pkg-config
+RUN apt-get install -y python3-pip
+RUN cd /root && git clone https://github.com/ultralytics/yolov5
+COPY best.pt /root/yolov5/
+COPY image_000000068.jpg /root/yolov5/
+WORKDIR /root/yolov5
+RUN pip3 -q install pip --upgrade
+RUN pip3 install urllib3 pyasn1 idna && \
+ pip3 install chardet certifi rsa && \
+ pip3 install requests pyasn1-modules oauthlib && \
+ pip3 install pytz python-dateutil pyparsing && \
+ pip3 install Pillow numpy kiwisolver && \
+
+ pip3 install google-auth cycler wheel && \
+ pip3 install werkzeug torch tensorboard-plugin-wit && \
+
+ pip3 install scipy protobuf pandas && \
+
+ pip3 install matplotlib markdown grpcio && \
+
+ pip3 install google-auth-oauthlib Cython absl-py && \
+
+ pip3 install tqdm torchvision thop && \
+
+ pip3 install tensorboard seaborn PyYAML && \
+ pip3 install setuptools six pycocotools && \
+ pip3 install opencv-python>=4.1.2  
