@@ -18,7 +18,7 @@ The JSON file for MS COCO contains the images and their corresponding labels.
 Sample image and annotations:
 ![](https://github.com/TanyaChutani/YoloV5/blob/5017d63bbf54952a4bd240dce42ba6cbe8313946/assets/coco_data.png)
 ![](https://github.com/TanyaChutani/YoloV5/blob/5017d63bbf54952a4bd240dce42ba6cbe8313946/assets/coco_data_format.png)
-Example PASCAL VOC bounding box<br>
+<br>Example PASCAL VOC bounding box<br>
 The format of bounding box in the provided json is specified by upper left coordinates and respective dimensions (width, height) of each box.<br>
 ![](https://github.com/TanyaChutani/YoloV5/blob/5017d63bbf54952a4bd240dce42ba6cbe8313946/assets/voc_data.png)
 
@@ -30,13 +30,12 @@ One stage detector algorithms such as models belonging to the SSD, YOLO classes 
 
 ## Two State Detection:
 Framework for two stage object detection networks (RCNN, Fast RCNN or Faster RCNN) is as follows:
-1. Extracting regions of interest which are then warped to a fix size image, as is required by the CNN (with or without the RoI pooling layer)
-2. Feature extraction is extracted by running a pretrained convolutional network on top of the region proposals.
-3. A classifier such as SVM makes classification decisions based on extracted features.
-4. Bounding box regression to predict location and size of the bounding box surrounding the object (using coordinates for box origin with dimensions of the bounding boxes)
-<br>
+1. Extracting regions of interest which are then warped to a fix size image, as is required by the CNN (with or without the RoI pooling layer)<br>
+2. Feature extraction is extracted by running a pretrained convolutional network on top of the region proposals.<br>
+3. A classifier such as SVM makes classification decisions based on extracted features.<br>
+4. Bounding box regression to predict location and size of the bounding box surrounding the object (using coordinates for box origin with dimensions of the bounding boxes)<br>
 ![](https://github.com/TanyaChutani/YoloV5/blob/5017d63bbf54952a4bd240dce42ba6cbe8313946/assets/two_stage_detectors.JPG)
-<br>
+
 ### Issues with the two stage detectors:
 1. Slow inference and expensive training policy
 2. Multi-stage pipeline training (CNN, classifier and regressor)
@@ -70,7 +69,7 @@ YOLO does not go through a regional proposal phase (as was the case with two sta
 ### New ideas:
 
 1. **Data Augmentations**
-Possibly one of the game changing aspects of YOLO is the use of mosaic augmentation, which helps detect smaller objects in the image by combining four images into one in arbitrary ratios. It encourages localization of a variety of images in different portions of the image.
+Possibly one of the game changing aspects of YOLO is the use of mosaic augmentation, which helps detect smaller objects in the image by combining four images into one in arbitrary ratios. It encourages localization of a variety of images in different portions of the image.<br>
 ![](https://github.com/TanyaChutani/YoloV5/blob/5017d63bbf54952a4bd240dce42ba6cbe8313946/assets/Result-of-a-mosaic-data-augmentation-example-from-four-input-images-best-viewed-in.jpg)
 
 2. **Anchor Boxes**
@@ -79,8 +78,9 @@ Usually learnt based on distribution of bounding boxes in a custom dataset throu
 
 3. **Backbone**
 Cross Stage Partial networks, with close connection to the densenet layer, solve the gradient problem in large convolutional nets which leads to lesser parameters thus lesser computational overhead, helping conncect layers which solve issues of vanishing gradients and assisting the ability of network to learn mappings of reused features.
-YOLOv5 uses CSPDarknet and CSPResNext which help eradicate bottlenecks during computations in CSP DenseNet, which then help improve learning process with the passage of an unedited version of the feature map.
+YOLOv5 uses CSPDarknet and CSPResNext which help eradicate bottlenecks during computations in CSP DenseNet, which then help improve learning process with the passage of an unedited version of the feature map.<br>
 ![](https://github.com/TanyaChutani/YoloV5/blob/5017d63bbf54952a4bd240dce42ba6cbe8313946/assets/CSP.png)
+<br>
 4. **Size and inference speeds**
 **YOLOv5 is faster** and 90% smaller than YOLOv4 in size which makes it a winner to be used for real time inference. (27 vs 244 MB)
 
@@ -101,9 +101,9 @@ In an effort to increase model's performance on validation data, we can tune **t
 
 
 ## Cloning yolov5 repository
-This step helps clone the YoloV5 repository while installing all the required libraries into our environment.
-`git clone https://github.com/ultralytics/yolov5.git`
-`pip3 install -r yolov5/requirements.txt`
+This step helps clone the YoloV5 repository while installing all the required libraries into our environment.<br>
+`git clone https://github.com/ultralytics/yolov5.git
+pip3 install -r yolov5/requirements.txt`
 
 
 ---
@@ -113,8 +113,8 @@ This step helps clone the YoloV5 repository while installing all the required li
 2. Extract relevant fields
 3. Creating consolidated data frame of images and annotations
 4. Split data into training and validation sets
-5. Convert input format to one that is supported by YOLO
-6. Transform and save respective images and bounding boxes based on YOLO formatted labels
+5. Convert input format to one that is supported by YOLOv5
+6. Transform and save respective images and bounding boxes based on YOLO formatted labels. <br>
 `python main_input.py`
 ---
 
@@ -178,7 +178,7 @@ Description: This command executes the containerised application of YOLOv5 with 
 **Description**: This command copies the contents of a source path to the destination path, from the container's file system to a local machine or vice versa.
 
 
-**Dockerfile**: It is a text file containing all instructions and commands which could be called by the user to build an image.
+**Dockerfile**: It is a text file containing all instructions and commands which could be called by the user to build an image.<br>
 `docker build . -t yolov5:v1.0
 docker run --name yolov5 yolov5:v1.0 python3 detect.py --source image_000000068.jpg --weights best.pt --project /root/yolov5
 docker cp yolo:/root/yolov5 C:\Users\HP\Downloads\docker\yolov5
