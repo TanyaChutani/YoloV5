@@ -1,7 +1,5 @@
 # Object detection with Yolov5
 
-# Object detection with Yolov5
-
 ## Basics for Object Detection
 Object detection involves classifying localized bounding boxes in the image, that is classifying the objects and searching on the position for the bounding box. Through object detection mechanisms and algorithms, we are able to understand what's in an image, while being able to describe both what is in an image and the locations of those objects in the image.
 <br>
@@ -18,11 +16,11 @@ Bounding boxes in VOC and COCO challenges are differently represented and they a
 
 The JSON file for MS COCO contains the images and their corresponding labels.
 Sample image and annotations:
-![](https://raw.githubusercontent.com/TanyaChutani/YoloV5/main/assets/coco_data.png?token=AGCG5WBT3AYGSPAEQ44N743AMLJLO)
-![](https://raw.githubusercontent.com/TanyaChutani/YoloV5/main/assets/coco_data_format.png?token=AGCG5WHVXF22IGWU5VHJ4S3AMLJOC)
+![](https://raw.githubusercontent.com/TanyaChutani/YoloV5/main/assets/coco_data.png?token=AGCG5WBV27UP34ALLJGRSN3AMLNCS)
+![](https://raw.githubusercontent.com/TanyaChutani/YoloV5/main/assets/coco_data_format.png?token=AGCG5WEKPOCZ3HZZLAD7L33AMLNDY)
 Example PASCAL VOC bounding box<br>
 The format of bounding box in the provided json is specified by upper left coordinates and respective dimensions (width, height) of each box.<br>
-![](https://raw.githubusercontent.com/TanyaChutani/YoloV5/main/assets/voc_data.png?token=AGCG5WBIIET3X3SOA5A775LAMLJSC)
+![](https://raw.githubusercontent.com/TanyaChutani/YoloV5/main/assets/voc_data.png?token=AGCG5WB43U72YUCSBTCCCITAMLNF6)
 
 ---
 # Detection Mechanisms:
@@ -37,7 +35,7 @@ Framework for two stage object detection networks (RCNN, Fast RCNN or Faster RCN
 3. A classifier such as SVM makes classification decisions based on extracted features.
 4. Bounding box regression to predict location and size of the bounding box surrounding the object (using coordinates for box origin with dimensions of the bounding boxes)
 <br>
-![](https://raw.githubusercontent.com/TanyaChutani/YoloV5/main/assets/two_stage_detectors.JPG?token=AGCG5WAGKHP67NLZV3CZQ53AMLLFQ)
+![](https://raw.githubusercontent.com/TanyaChutani/YoloV5/main/assets/two_stage_detectors.JPG?token=AGCG5WC6QQ6LUIZRMQKAMR3AMLNI2)
 <br>
 ### Issues with the two stage detectors:
 1. Slow inference and expensive training policy
@@ -45,7 +43,8 @@ Framework for two stage object detection networks (RCNN, Fast RCNN or Faster RCN
 
 ## Single State Detection
 In single stage detectors, the convolutional layers make predictions in one shot, with the approach being based on a feed forward network that creates a fix sized collection of bounding boxes, the objectness of each bounding box being then predicted by the logic regression as indicative of the level of overlap with the ground truth.<br>
-![](https://raw.githubusercontent.com/TanyaChutani/YoloV5/main/assets/one_stage.JPG?token=AGCG5WD6A22ZP22HW6GKRYDAMLLFI)<br>
+![](https://raw.githubusercontent.com/TanyaChutani/YoloV5/main/assets/one_stage.JPG?token=AGCG5WB2PV3752FKLOBLFVDAMLNKQ)
+
 ### SSD:
 Working of the Single Shot Multibox Detection networks is based on these components:
 1. Feature extractor convolutional network
@@ -108,7 +107,16 @@ This step helps clone the YoloV5 repository while installing all the required li
 
 
 ---
+## Input Pipeline
 
+1. Load images and annotations
+2. Extract relevant fields
+3. Creating consolidated data frame of images and annotations
+4. Split data into training and validation sets
+5. Convert input format to one that is supported by YOLO
+6. Transform and save respective images and bounding boxes based on YOLO formatted labels
+
+---
 
 ## Training yolov5
 The training on the model is done by the train.py. parameters of note, include:
