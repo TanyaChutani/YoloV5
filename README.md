@@ -151,16 +151,14 @@ Docker helps in execution of processes in isolated containers (lightweight execu
 
 ### Commands in use:
 
-1.
-**Command**: **docker build**
+1.**Command**: **docker build**
 
 **Usage**: docker build . -t yolov5:0.1
 
 **Description**: Helps builds Docker images from a Dockerfile and a context, which are files located on a specified path.
 
 
-2.
-**Command**: **docker run**
+2.**Command**: **docker run**
 
 Usage to detect objects in a user specified image: docker run --name yolov5 yolov5:v1.0 python3 detect.py --source image_000000068.jpg --weights best.pt --project /root/yolov5
 
@@ -170,8 +168,7 @@ Description: This command executes the containerised application of YOLOv5 with 
 3. file specific params: source image (detect.py), weights (best.pt) and save directory (--project)
 
 
-3.
-**Command**: **docker cp**
+3.**Command**: **docker cp**
 
 **Usage**: docker cp yolo:/root/yolov5 C:\Users\HP\Downloads\docker\yolov5
 
