@@ -16,11 +16,11 @@ Bounding boxes in VOC and COCO challenges are differently represented and they a
 
 The JSON file for MS COCO contains the images and their corresponding labels.
 Sample image and annotations:
-![](https://raw.githubusercontent.com/TanyaChutani/YoloV5/main/assets/coco_data.png?token=AGCG5WBV27UP34ALLJGRSN3AMLNCS)
-![](https://raw.githubusercontent.com/TanyaChutani/YoloV5/main/assets/coco_data_format.png?token=AGCG5WEKPOCZ3HZZLAD7L33AMLNDY)
+![](https://github.com/TanyaChutani/YoloV5/blob/5017d63bbf54952a4bd240dce42ba6cbe8313946/assets/coco_data.png)
+![](https://github.com/TanyaChutani/YoloV5/blob/5017d63bbf54952a4bd240dce42ba6cbe8313946/assets/coco_data_format.png)
 Example PASCAL VOC bounding box<br>
 The format of bounding box in the provided json is specified by upper left coordinates and respective dimensions (width, height) of each box.<br>
-![](https://raw.githubusercontent.com/TanyaChutani/YoloV5/main/assets/voc_data.png?token=AGCG5WB43U72YUCSBTCCCITAMLNF6)
+![](https://github.com/TanyaChutani/YoloV5/blob/5017d63bbf54952a4bd240dce42ba6cbe8313946/assets/voc_data.png)
 
 ---
 # Detection Mechanisms:
@@ -35,7 +35,7 @@ Framework for two stage object detection networks (RCNN, Fast RCNN or Faster RCN
 3. A classifier such as SVM makes classification decisions based on extracted features.
 4. Bounding box regression to predict location and size of the bounding box surrounding the object (using coordinates for box origin with dimensions of the bounding boxes)
 <br>
-![](https://raw.githubusercontent.com/TanyaChutani/YoloV5/main/assets/two_stage_detectors.JPG?token=AGCG5WC6QQ6LUIZRMQKAMR3AMLNI2)
+![](https://github.com/TanyaChutani/YoloV5/blob/5017d63bbf54952a4bd240dce42ba6cbe8313946/assets/two_stage_detectors.JPG)
 <br>
 ### Issues with the two stage detectors:
 1. Slow inference and expensive training policy
@@ -43,7 +43,7 @@ Framework for two stage object detection networks (RCNN, Fast RCNN or Faster RCN
 
 ## Single State Detection
 In single stage detectors, the convolutional layers make predictions in one shot, with the approach being based on a feed forward network that creates a fix sized collection of bounding boxes, the objectness of each bounding box being then predicted by the logic regression as indicative of the level of overlap with the ground truth.<br>
-![](https://raw.githubusercontent.com/TanyaChutani/YoloV5/main/assets/one_stage.JPG?token=AGCG5WB2PV3752FKLOBLFVDAMLNKQ)
+![](https://github.com/TanyaChutani/YoloV5/blob/5017d63bbf54952a4bd240dce42ba6cbe8313946/assets/one_stage.JPG)
 
 ### SSD:
 Working of the Single Shot Multibox Detection networks is based on these components:
@@ -65,22 +65,22 @@ YOLO does not go through a regional proposal phase (as was the case with two sta
 ---
 
 ## YOLOv5 architecture
-![](https://raw.githubusercontent.com/TanyaChutani/YoloV5/main/assets/yolov5.png?token=AGCG5WBMOXOC4YGWJCF2QATAMLLU4)
+![](https://github.com/TanyaChutani/YoloV5/blob/5017d63bbf54952a4bd240dce42ba6cbe8313946/assets/yolov5.png)
 
 ### New ideas:
 
 1. **Data Augmentations**
 Possibly one of the game changing aspects of YOLO is the use of mosaic augmentation, which helps detect smaller objects in the image by combining four images into one in arbitrary ratios. It encourages localization of a variety of images in different portions of the image.
-![](https://raw.githubusercontent.com/TanyaChutani/YoloV5/main/assets/Result-of-a-mosaic-data-augmentation-example-from-four-input-images-best-viewed-in.jpg?token=AGCG5WFM2NHWPDD26U3CASLAMLL4O)
+![](https://github.com/TanyaChutani/YoloV5/blob/5017d63bbf54952a4bd240dce42ba6cbe8313946/assets/Result-of-a-mosaic-data-augmentation-example-from-four-input-images-best-viewed-in.jpg)
 
 2. **Anchor Boxes**
 Usually learnt based on distribution of bounding boxes in a custom dataset through clustering. Yolov3 introduced the importance of learning anchor boxes through the custom dataset yields better accuracy. A YAML specified must contain number of input channels to network, depth and width multipliers and anchor box dimensions.
-![](https://raw.githubusercontent.com/TanyaChutani/YoloV5/main/assets/Anchorboxes.png?token=AGCG5WH5VMDRPEYKFZTMSNLAMLLZK)
+![](https://github.com/TanyaChutani/YoloV5/blob/5017d63bbf54952a4bd240dce42ba6cbe8313946/assets/Anchorboxes.png)
 
 3. **Backbone**
 Cross Stage Partial networks, with close connection to the densenet layer, solve the gradient problem in large convolutional nets which leads to lesser parameters thus lesser computational overhead, helping conncect layers which solve issues of vanishing gradients and assisting the ability of network to learn mappings of reused features.
 YOLOv5 uses CSPDarknet and CSPResNext which help eradicate bottlenecks during computations in CSP DenseNet, which then help improve learning process with the passage of an unedited version of the feature map.
-![](https://raw.githubusercontent.com/TanyaChutani/YoloV5/main/assets/CSP.png?token=AGCG5WHBZFBMSUTNTY2UYXDAMLL6W)
+![](https://github.com/TanyaChutani/YoloV5/blob/5017d63bbf54952a4bd240dce42ba6cbe8313946/assets/CSP.png)
 4. **Size and inference speeds**
 **YOLOv5 is faster** and 90% smaller than YOLOv4 in size which makes it a winner to be used for real time inference. (27 vs 244 MB)
 
@@ -102,8 +102,8 @@ In an effort to increase model's performance on validation data, we can tune **t
 
 ## Cloning yolov5 repository
 This step helps clone the YoloV5 repository while installing all the required libraries into our environment.
-* git clone https://github.com/ultralytics/yolov5.git  
-* pip3 install -r yolov5/requirements.txt  
+`git clone https://github.com/ultralytics/yolov5.git`
+`pip3 install -r yolov5/requirements.txt`
 
 
 ---
@@ -115,7 +115,7 @@ This step helps clone the YoloV5 repository while installing all the required li
 4. Split data into training and validation sets
 5. Convert input format to one that is supported by YOLO
 6. Transform and save respective images and bounding boxes based on YOLO formatted labels
-
+`python main_input.py`
 ---
 
 ## Training yolov5
@@ -127,7 +127,7 @@ The training on the model is done by the train.py. parameters of note, include:
 5. **--img**: Image size of the training images. Upon experimentation with this parameter, 1024 was chosen to be a good parameter value.
 
 
-*  python yolov5/train.py --img 1024 --batch 4 --epochs 50 --data yolo.yml --cfg yolov5/models/yolov5s.yaml
+`python yolov5/train.py --img 1024 --batch 4 --epochs 50 --data yolo.yml --cfg yolov5/models/yolov5s.yaml`
 
 
 ---
@@ -141,7 +141,7 @@ It has the following arguments most commonly used as per their usage in the mode
 3. **--img**: Size of the test image
 4. **--save_txt**: either have predicted bounding boxes drawn on the localized object in the image or predict predictions to a text file
 
-*   python yolov5/detect.py --source /content/yolov5_data/images/validation --weights /content/runs/train/exp/weights/best.pt
+`python yolov5/detect.py --source /content/yolov5_data/images/validation --weights /content/runs/train/exp/weights/best.pt`
 
 ---
 
@@ -179,4 +179,14 @@ Description: This command executes the containerised application of YOLOv5 with 
 
 
 **Dockerfile**: It is a text file containing all instructions and commands which could be called by the user to build an image.
-
+`docker build . -t yolov5:v1.0
+docker run --name yolov5 yolov5:v1.0 python3 detect.py --source image_000000068.jpg --weights best.pt --project /root/yolov5
+docker cp yolo:/root/yolov5 C:\Users\HP\Downloads\docker\yolov5
+`
+## PR Curve
+![](https://github.com/TanyaChutani/YoloV5/blob/5017d63bbf54952a4bd240dce42ba6cbe8313946/results/PR_curve.png)
+## Results 
+![](https://github.com/TanyaChutani/YoloV5/blob/5017d63bbf54952a4bd240dce42ba6cbe8313946/results/image_000000028.jpg)
+![](https://github.com/TanyaChutani/YoloV5/blob/5017d63bbf54952a4bd240dce42ba6cbe8313946/results/image_000000101.jpg)
+![](https://github.com/TanyaChutani/YoloV5/blob/5017d63bbf54952a4bd240dce42ba6cbe8313946/results/image_000000486.jpg)
+![](https://github.com/TanyaChutani/YoloV5/blob/5017d63bbf54952a4bd240dce42ba6cbe8313946/results/image_000000672.jpg)
